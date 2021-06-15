@@ -1,0 +1,18 @@
+spring:
+  data:
+    mongodb:
+      host: localhost
+      database: financeapi
+      authentication-database: admin
+      username: ${MONGODB_USERNAME}
+      password: ${MONGODB_PASSWORD}
+
+keycloak:
+  realm: springboot-realm
+  auth-server-url: http://localhost:8180/auth
+  ssl-required: external
+  resource: springboot-client
+  use-resource-role-mappings: true
+  bearer-only: true
+  credentials:
+    secret: 54886211-7072-42f4-9c43-0daf489b7280
