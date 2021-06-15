@@ -10,7 +10,7 @@ import java.time.LocalDate;
 @Document
 public class Transaction {
     @Id
-    private Long id;
+    private String id;
     private String description;
     @NotNull
     private LocalDate date;
@@ -25,11 +25,11 @@ public class Transaction {
     private User user;
     private Category category;
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
