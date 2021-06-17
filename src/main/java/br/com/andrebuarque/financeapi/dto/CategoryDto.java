@@ -9,9 +9,8 @@ public class CategoryDto {
     @NotBlank
     private String name;
     @NotNull
-    private String pattern;
-    @NotNull
     private TransactionType type;
+    private String pattern;
 
     public String getName() {
         return name;

@@ -36,7 +36,7 @@ public class CategoryService {
         return categoryRepository.save(category);
     }
 
-    public void update(final User user, final String categoryId, final CategoryDto categoryDto) throws CategoryNotFoundException, InvalidUserException {
+    public Category update(final User user, final String categoryId, final CategoryDto categoryDto) throws CategoryNotFoundException, InvalidUserException {
         assert Objects.nonNull(categoryId);
         validate(categoryDto);
 
@@ -47,7 +47,7 @@ public class CategoryService {
         newCategory.setUser(user);
         newCategory.setId(categoryId);
 
-        categoryRepository.save(newCategory);
+        return categoryRepository.save(newCategory);
     }
 
     public Category findById(final User user, final String categoryId) throws CategoryNotFoundException, InvalidUserException {
@@ -70,6 +70,6 @@ public class CategoryService {
     private Category findById(final String categoryId) throws CategoryNotFoundException {
         return categoryRepository
             .findById(categoryId)
-            .orElseThrow(() -> new CategoryNotFoundException());
+            .orElseThrow(CategoryNotFoundException::new);
     }
 }
