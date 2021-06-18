@@ -1,16 +1,12 @@
-package br.com.andrebuarque.financeapi.entity;
+package br.com.andrebuarque.financeapi.dto;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
+import br.com.andrebuarque.financeapi.entity.*;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
 import java.time.LocalDate;
 
-@Document
-public class Transaction {
-    @Id
-    private String id;
+public class TransactionDto {
     private String description;
     @NotNull
     private LocalDate date;
@@ -21,20 +17,13 @@ public class Transaction {
     private TransactionType type;
     @NotNull
     private TransactionStatus status;
-    @NotNull
-    private User user;
-    private Category category;
+    private String categoryId;
 
     public static class Builder {
-        private static Transaction transaction;
+        private static TransactionDto transaction;
 
         Builder() {
-            transaction = new Transaction();
-        }
-
-        public Builder id(String id) {
-            transaction.setId(id);
-            return this;
+            transaction = new TransactionDto();
         }
 
         public Builder description(String description) {
@@ -62,17 +51,12 @@ public class Transaction {
             return this;
         }
 
-        public Builder user(User user) {
-            transaction.setUser(user);
+        public Builder categoryId(String categoryId) {
+            transaction.setCategoryId(categoryId);
             return this;
         }
 
-        public Builder category(Category category) {
-            transaction.setCategory(category);
-            return this;
-        }
-
-        public Transaction build() {
+        public TransactionDto build() {
             return transaction;
         }
     }
@@ -81,19 +65,11 @@ public class Transaction {
         return new Builder();
     }
 
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
     public String getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(final String description) {
         this.description = description;
     }
 
@@ -101,7 +77,7 @@ public class Transaction {
         return date;
     }
 
-    public void setDate(LocalDate date) {
+    public void setDate(final LocalDate date) {
         this.date = date;
     }
 
@@ -109,7 +85,7 @@ public class Transaction {
         return value;
     }
 
-    public void setValue(Double value) {
+    public void setValue(final Double value) {
         this.value = value;
     }
 
@@ -117,7 +93,7 @@ public class Transaction {
         return type;
     }
 
-    public void setType(TransactionType type) {
+    public void setType(final TransactionType type) {
         this.type = type;
     }
 
@@ -129,19 +105,11 @@ public class Transaction {
         this.status = status;
     }
 
-    public User getUser() {
-        return user;
+    public String getCategoryId() {
+        return categoryId;
     }
 
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public Category getCategory() {
-        return category;
-    }
-
-    public void setCategory(Category category) {
-        this.category = category;
+    public void setCategoryId(final String categoryId) {
+        this.categoryId = categoryId;
     }
 }

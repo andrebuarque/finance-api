@@ -38,7 +38,7 @@ class CategoryServiceTest {
     ArgumentCaptor<Category> categoryArgumentCaptor;
 
     @Test
-    void testFindAllCategories() {
+    void testFindAll() {
         final Category category = CategoryStub.getCategory();
         when(repository.findByUser(any())).thenReturn(Stream.of(category));
 
@@ -49,7 +49,7 @@ class CategoryServiceTest {
     }
 
     @Test
-    void testCreateCategory() {
+    void testCreate() {
         final User user = UserStub.getUser();
         final CategoryDto category = CategoryDtoStub.getCategory();
 

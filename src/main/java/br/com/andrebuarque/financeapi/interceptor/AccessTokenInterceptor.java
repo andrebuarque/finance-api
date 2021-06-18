@@ -1,4 +1,4 @@
-package br.com.andrebuarque.financeapi.controller;
+package br.com.andrebuarque.financeapi.interceptor;
 
 import br.com.andrebuarque.financeapi.entity.User;
 import br.com.andrebuarque.financeapi.service.UserService;
