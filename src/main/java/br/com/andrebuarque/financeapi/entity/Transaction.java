@@ -1,5 +1,8 @@
 package br.com.andrebuarque.financeapi.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -13,6 +16,8 @@ public class Transaction {
     private String id;
     private String description;
     @NotNull
+    @JsonSerialize(using = LocalDateSerializer.class)
+    @JsonFormat(shape = JsonFormat.Shape.STRING)
     private LocalDate date;
     @Positive
     @NotNull

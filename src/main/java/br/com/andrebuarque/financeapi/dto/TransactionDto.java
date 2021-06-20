@@ -1,6 +1,9 @@
 package br.com.andrebuarque.financeapi.dto;
 
-import br.com.andrebuarque.financeapi.entity.*;
+import br.com.andrebuarque.financeapi.entity.TransactionStatus;
+import br.com.andrebuarque.financeapi.entity.TransactionType;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
@@ -9,6 +12,7 @@ import java.time.LocalDate;
 public class TransactionDto {
     private String description;
     @NotNull
+    @JsonSerialize(using = LocalDateSerializer.class)
     private LocalDate date;
     @Positive
     @NotNull
